@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Marker Clustering</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 80%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      .up-img {
+        width: 100%;
+      }
+      .up-img > img {
+          width:100%;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="up-img">
+      <img src="./images/up-img.png" alt="" />
+    </div>
+    <div id="map"></div>
+    <script src="./data.js"></script>
+    <script>
+
+      function initMap() {
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 3,
+          center: base.location
+        });
+
+        //var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+        var markers = mockData.map(function(data, i) {
+          var value = data.charge / data.capacity
+          var icon_url = value > 0.8 ? './images/green.png' : (value > 0.5 ? './images/blue.png' : './images/orange.png')
+          return new google.maps.Marker({
+            position: data.location,
+            //label: labels[i % labels.length],
+            icon: icon_url
+          });
+        });
+
+        // Add a marker clusterer to manage the markers.
+        var markerCluster = new MarkerClusterer(map, markers,
+            {imagePath: './images/m'});
+      }
+    </script>
+    <script src="./markerclusterer.js">
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAf7IrWjynv9wRgsm_mMJE69EhADqA7bW8&callback=initMap">
+    </script>
+  </body>
+</html>
