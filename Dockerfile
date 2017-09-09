@@ -1,7 +1,7 @@
 # create a file named Dockerfile
 FROM daocloud.io/node
 
-MAINTAINER Sergi Uceda <sergi@energo.cn>
+MAINTAINER Jose Duque (jose@energo.cn)
 
 # create app directory in container
 RUN mkdir -p /app

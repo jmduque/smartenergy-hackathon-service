@@ -10,7 +10,7 @@ module.exports = {
       },
       env_staging: {
         NODE_ENV: 'staging',
-        API_PORT: 3001,
+        API_PORT: 3000,
         API_DOMAIN: 'ec2-54-169-214-62.ap-southeast-1.compute.amazonaws.com',
         API_SECRET: '6xkn18O4RkZqFeud1Dnw*uMNcGjcwaZibqE7ZDtYf',
         STAGING_SERVICES_DB: 'mongodb://energo:energo_23axz23@ip-172-31-6-125.cn-north-1.compute.internal:27017/staging_services_db?authSource=admin'
