@@ -24,6 +24,9 @@ const batterySchema = new Schema({
     ref: 'User',
     required: true
   },
+  name: {
+    type: String
+  },
   status: {
     type: String,
     enum: ['online', 'offline'],

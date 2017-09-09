@@ -9,6 +9,8 @@ const httpStatus = require('http-status-codes')
 const auth = require('./modules/auth/authController')
 const user = require('./modules/user/userController')
 const battery = require('./modules/battery/batteryController')
+const charge = require('./modules/charge/chargeController')
+const total = require('./modules/total/totalController')
 
 // Middleware to require login/auth
 const userAuth = passport.authenticate('jwt', {session: false})
@@ -52,5 +54,16 @@ v1Routes.get('/battery', battery.getItems)
 v1Routes.post('/battery', userAuth, battery.postItem)
 v1Routes.put('/battery/:id', userAuth, battery.putItem)
 v1Routes.delete('/battery/:id', userAuth, battery.deleteItem)
+
+//charge
+v1Routes.get('/charge/:id', charge.getItem)
+v1Routes.get('/charge', charge.getItems)
+v1Routes.post('/charge', userAuth, charge.postItem)
+v1Routes.put('/charge/:id', userAuth, charge.putItem)
+v1Routes.delete('/charge/:id', userAuth, charge.deleteItem)
+
+//total
+
+//v1Routes.get('/total', total.getAll)
 
 module.exports = apiRoutes

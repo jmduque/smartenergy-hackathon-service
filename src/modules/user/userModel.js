@@ -81,12 +81,10 @@ const userSchema = new Schema({
     }
   },
   private_key: {
-    type: String,
-    unique: true
+    type: String
   },
   public_key: {
-    type: String,
-    unique: true
+    type: String
   },
   avatar: String,
   is_service: {
