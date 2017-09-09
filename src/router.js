@@ -5,8 +5,10 @@ const passport = require('passport')
 const ConnectRoles = require('connect-roles')
 const httpStatus = require('http-status-codes')
 
+// Controllers
 const auth = require('./modules/auth/authController')
 const user = require('./modules/user/userController')
+const battery = require('./modules/battery/batteryController')
 
 // Middleware to require login/auth
 const userAuth = passport.authenticate('jwt', {session: false})
@@ -43,5 +45,12 @@ v1Routes.post('/auth/password/forgot', auth.postPasswordForgot)
 // User
 v1Routes.get('/users/:id', userAuth, user.getUser)
 v1Routes.put('/users/:id', userAuth, user.updateUser)
+
+// Battery
+v1Routes.get('/battery/:id', battery.getItem)
+v1Routes.get('/battery', battery.getItems)
+v1Routes.post('/battery', userAuth, battery.postItem)
+v1Routes.put('/battery/:id', userAuth, battery.putItem)
+v1Routes.delete('/battery/:id', userAuth, battery.deleteItem)
 
 module.exports = apiRoutes
