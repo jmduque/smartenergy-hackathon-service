@@ -8,14 +8,9 @@
 
 // Modules
 const httpStatus = require('http-status-codes')
-const validator = require('validator')
-const Promise = require('bluebird')
 
 // Models
 const User = require('./userModel')
-
-// Helpers
-const userHelper = require('./userHelper')
 
 // Constants
 const errors = require('../../constants/errors')
@@ -140,16 +135,7 @@ module.exports.deleteUser = async (req, res) => {
     _id: userId
   }
 
-  const marketConditions = {
-    owner: userId
-  }
-
   try {
-    const ordersRemoved = await MarketOrder.remove(marketConditions).exec()
-    if (ordersRemoved.result.ok !== 1) {
-      return res.status(httpStatus.BAD_REQUEST).json({error: errors.USER_ERROR_REMOVE_MARKET_ORDER})
-    }
-
     const userRemoved = await User.remove(userConditions).exec()
     if (userRemoved.result.ok !== 1) {
       return res.status(httpStatus.BAD_REQUEST).json({error: errors.USER_ERROR_REMOVE_USER})

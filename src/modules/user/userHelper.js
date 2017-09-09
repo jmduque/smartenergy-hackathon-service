@@ -1,16 +1,11 @@
 'use strict'
 
 // Modules
-const Promise = require('bluebird')
 const validator = require('validator')
 const httpStatus = require('http-status-codes')
 
 // Models
 const UserModel = require('./userModel')
-const UserKeysLog = require('./userKeysLogModel')
-
-// Config
-const bcConfig = require('../../config/blockchain')
 
 // Constants
 const errors = require('../../constants/errors')

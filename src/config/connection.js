@@ -24,20 +24,11 @@ if (!process.env.NODE_ENV) {
 // Service Database
 const connApi = mongoose.createConnection(config.mongoURI[process.env.NODE_ENV], options)
 
-// BigchainDB connection
-const connBdb = mongoose.createConnection(config.mongoBdb[process.env.NODE_ENV])
-
 connApi.on('error', console.error.bind(console, 'Connection Error : '))
 connApi.once('open', () => {
   console.log('Connection to API service DB ok!')
 })
 
-connBdb.on('error', console.error.bind(console, 'Connection Error : '))
-connBdb.once('open', () => {
-  console.log('Connection to Blockchain DB ok!')
-})
-
 mongoose.conn_api = connApi
-mongoose.conn_bdb = connBdb
 
 module.exports = mongoose
