@@ -10,6 +10,9 @@ const locationSchema = new Schema({
   },
   longitude: {
     type: Number
+  },
+  name: {
+    type: String
   }
 }, {
   timestamps: {
@@ -50,7 +53,7 @@ const chargeSchema = new Schema({
   power: {
     type: Number
   },
-  pressure: {
+  voltage: {
     type: String
   },
   booking: {

@@ -74,7 +74,7 @@ module.exports.postItem = function(req,res) {
     owner: req.body.user_id,
     using: req.body.using,
     power: req.body.power,
-    pressure: req.body.pressure,
+    voltage: req.body.voltage,
     booking: req.body.booking,
     location: req.body.location
   })

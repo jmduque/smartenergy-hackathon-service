@@ -11,6 +11,9 @@ const locationSchema = new Schema(
     },
     longitude: {
       type: Number
+    },
+    name: {
+      type: String
     }
   },
   {
